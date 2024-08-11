@@ -1,0 +1,48 @@
+
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="/layouts/_mainLayout">
+
+<div layout:fragment="content" class="container mt-5">
+  <h1>Crear nueva orden</h1>
+  <hr>
+  <div class="card shadow-sm">
+    <div class="card-body">
+      <form th:action="@{/ordenes/save}" th:object="${ordenDEML}" method="post">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="fecha">Fecha<span style="color:red;">*</span></label>
+              <input type="date" class="form-control" th:field="*{fecha}" th:value="${#dates.format(ordenDEML.fecha, 'dd/MM/yyyy')}" id="fecha" required>
+              <div th:if="${#fields.hasErrors('fecha')}" class="alert alert-danger">
+                <span th:each="err : ${#fields.errors('fecha')}" th:text="${err}"></span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <div class="row" style="padding: 15px">
+          <div class="col-md-6">
+            <div class="form-group">
+              <button type="submit" class="btn btn-outline-primary" style="width: 100%">Guardar</button>
+
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <a th:href="@{/ordenes}" class="btn btn-outline-secondary" style="width: 100%">Regresar</a>
+
+            </div>
+          </div>
+        </div>
+
+
+
+      </form>
+    </div>
+
+  </div>
+
+
+</div>

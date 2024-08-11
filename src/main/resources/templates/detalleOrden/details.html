@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="/layouts/_mainLayout">
+
+<div layout:fragment="content" class="container mt-5">
+    <h1 class="mb-4">Eliminar Detalle Orden</h1>
+    <hr>
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <dl class="row">
+                <dt class="col-sm-3 font-weight-bold">ID</dt>
+                <dd class="col-sm-9" th:text="${detalleOrden.id}"></dd>
+
+                <dt class="col-sm-3 font-weight-bold">Fecha de la Orden</dt>
+                <dd class="col-sm-9" th:text="${#dates.format(detalleOrden.ordenDEML.fecha, 'dd/MM/yyyy')}"></dd>
+
+                <dt class="col-sm-3 font-weight-bold">Nombre del Producto</dt>
+                <dd class="col-sm-9" th:text="${detalleOrden.productoDEML.nombreDEML}"></dd>
+
+                <dt class="col-sm-3 font-weight-bold">Cantidad</dt>
+                <dd class="col-sm-9" th:text="${detalleOrden.cantidadDEML}"></dd>
+
+                <dt class="col-sm-3 font-weight-bold">Precio</dt>
+                <dd class="col-sm-9" th:text="${detalleOrden.precioDEML}"></dd>
+
+            </dl>
+        </div>
+        <div class="card-footer text-right">
+            <a th:href="@{/detalleOrdenes/edit/{id} (id = ${detalleOrden.id})}" class="btn btn-outline-info">Modificar</a>
+            <a th:href="@{/detalleOrdenes}" class="btn btn-outline-secondary">Regresar</a>
+        </div>
+    </div>
+</div>
+
+</html>

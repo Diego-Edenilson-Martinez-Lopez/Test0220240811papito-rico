@@ -1,0 +1,44 @@
+
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="/layouts/_mainLayout">
+
+<div layout:fragment="content" class="container mt-5">
+    <h1>Modificar Producto</h1>
+    <hr>
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <form th:action="@{/productos/save}" th:object="${producto}" method="post">
+                <input type="hidden" th:field="*{id}">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="nombreDEML">Nombre</label>
+                            <input type="text" class="form-control" th:field="*{nombreDEML}" id="nombreDEML" required>
+                            <div th:if="${#fields.hasErrors('nombreDEML')}" class="alert alert-danger">
+                                <span th:each="err : ${#fields.errors('nombreDEML')}" th:text="${err}"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" style="padding: 15px">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-outline-primary" style="width: 100%">Modificar</button>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <a th:href="@{/productos}" class="btn btn-outline-secondary" style="width: 100%">Regresar</a>
+
+                        </div>
+                    </div>
+                </div>
+
+
+        </div>
+
+    </div>
+
+</div>
